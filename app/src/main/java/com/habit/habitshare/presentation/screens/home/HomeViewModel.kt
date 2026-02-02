@@ -14,9 +14,7 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import java.time.DayOfWeek
 import java.time.LocalDate
-import java.time.temporal.TemporalAdjusters
 import javax.inject.Inject
 
 @HiltViewModel
@@ -72,10 +70,11 @@ class HomeViewModel @Inject constructor(
 
     private suspend fun getWeekCheckIns(habitId: Long): Map<LocalDate, CheckInStatus> {
         val today = LocalDate.now()
-        val startOfWeek = today.with(TemporalAdjusters.previousOrSame(DayOfWeek.MONDAY))
-        val endOfWeek = startOfWeek.plusDays(6)
+        // Get last 7 days ending with today (matching WeekRow display)
+        val startDate = today.minusDays(6)
+        val endDate = today
 
-        val checkIns = checkInRepository.getCheckInsForHabitInRangeSync(habitId, startOfWeek, endOfWeek)
+        val checkIns = checkInRepository.getCheckInsForHabitInRangeSync(habitId, startDate, endDate)
         return checkIns.associate { it.date to it.status }
     }
 
