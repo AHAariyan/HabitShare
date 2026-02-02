@@ -1,0 +1,47 @@
+Product Requirements Document (PRD): HabitShare
+1. Feature: Habit Creation & Configuration
+Goal: To allow users to define a specific goal with flexible scheduling and reminder options.
+1.1 Habit Details (Screenshot 1)
+Habit Title: Mandatory text field for the habit name.
+Description: Optional text field for additional context.
+Privacy/Sharing: A "Shared With" module to manage which friends can see the progress for this specific habit.
+1.2 Frequency Logic (Screenshots 2–8)
+The system must support four distinct scheduling types:
+Daily: Habit repeats every day.
+Specific Days: A toggle-based UI (S, M, T, W, T, F, S). Green indicates an active day; grey indicates an off-day.
+# Per Week: A numerical dropdown (1–7) allowing the user to set a quota per week without fixed days.
+# Per Month: A numerical dropdown (1–31) allowing the user to set a monthly goal.
+1.3 Reminder System (Screenshots 9–11)
+Multiple Reminders: Ability to add more than one alert.
+Time Picker: A standard clock UI for selecting the notification time.
+Day Selection: Reminders can be mapped to specific days of the week, independent of the habit's frequency.
+2. Feature: Tracking & Logging (Check-in)
+Goal: To provide a quick and detailed way to record habit performance.
+2.1 Dashboard Interaction (Screenshots 12, 15, 16)
+The "Home" screen displays a horizontal row of the current week's dates for each habit.
+The Quick-Action Menu: Tapping a date circle triggers a floating pop-up with four primary actions:
+Success (Green Check): Marks the habit as completed.
+Fail (Red X): Marks the habit as missed.
+Skip (Grey Dash): Marks the day as excused (does not negatively impact the "Overall" percentage).
+More (...) Button: Opens the full Check-in screen.
+2.2 Detailed Check-in Screen (Screenshot 17)
+Users can access this screen for deeper logging:
+Status Selection: Toggle between Success, Fail, Skip, or Empty (Trash icon to reset the day).
+Comments: A text field to add notes or "reasons" for the day's result (e.g., "Gcf" as seen in Screenshot 14).
+Save: Commits the status and comment to the database.
+3. Feature: Progress Visualization
+Goal: To give users a bird's-eye view of their consistency.
+3.1 Habit Headers (Screenshot 12)
+Each habit displays three live metrics:
+Streak: The current number of consecutive "Success" days.
+Overall: A percentage-based consistency score.
+Privacy Status: Label indicating if the habit is "Private" or "Shared."
+3.2 Calendar View (Screenshots 13, 14)
+Monthly Grid: A full calendar view where each day is color-coded based on the logged status (Green, Red, Grey).
+Comment Preview: If a comment was added during check-in, it is displayed below the calendar when the corresponding date is selected.
+4. UI/UX Color Logic (Standardized)
+Green: Success / Active Selection.
+Red: Fail / Missed Goal.
+Dark Grey/Dash: Skip / Excused.
+Light Grey/Empty: Future date or No data logged.
+Blue Header: Primary navigation and action buttons ("Save", "Add", "Edit").
